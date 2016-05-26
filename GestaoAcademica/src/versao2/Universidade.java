@@ -24,23 +24,20 @@ public class Universidade {
         this.disciplinasArray = new ArrayList();
     }
 
-    
     /*Modificar para carregar dados do estudandte*/
-    public void carregarDadosArquivo(String nomeArquivoDisciplinas,String nomeArquivoEstudantes,String nomeArquivoMatriculas) {
+    public void carregarDadosArquivo(String nomeArquivoDisciplinas, String nomeArquivoEstudantes, String nomeArquivoMatriculas) {
         //Criando Disciplinas
         try {
             BufferedReader lerDisciplinas = new BufferedReader(new FileReader(nomeArquivoDisciplinas));
-            
-            for(String linha; (linha = lerDisciplinas.readLine()) != null; ) {
+
+            for (String linha; (linha = lerDisciplinas.readLine()) != null;) {
                 String dadosDisciplina[] = linha.split(":");
                 String codigo = (dadosDisciplina[0]);
                 int credito = Integer.parseInt(dadosDisciplina[1]);
-                
+
                 Disciplina disciplina = new Disciplina(codigo, credito);
                 disciplinasArray.add(disciplina);
-                
-                
-                
+
             }
         } catch (Exception e) {
             System.out.println("Error1 " + e.getMessage());
@@ -51,16 +48,15 @@ public class Universidade {
 
             for (String linha; (linha = lerEstudante.readLine()) != null;) {
                 String dadosEstudante[] = linha.split(":");
-                long id = Long.parseLong((dadosEstudante[0]));
-                String nome = (dadosEstudante[1]);
-                String email = (dadosEstudante[2]);
-                
-                
-//                Será refatorada                
-//                Estudante estudante = new Estudante(id, nome, email);
-//                estudantesArray.add(estudante);
-                
-
+                String tipo = dadosEstudante[3];
+                switch (tipo) {
+                    case "GRAD":
+                        estudantesArray.add(new EstudanteGrad(Long.parseLong(dadosEstudante[0]), dadosEstudante[1], dadosEstudante[2], Integer.parseInt(dadosEstudante[4])));
+                        break;
+                    case "POS":
+                        estudantesArray.add(new EstudantePos(Long.parseLong(dadosEstudante[0]), dadosEstudante[1], dadosEstudante[2], dadosEstudante[4], dadosEstudante[5]));
+                        break;
+                }
             }
         } catch (Exception e) {
             System.out.println("Error2 " + e.getMessage());
@@ -70,34 +66,32 @@ public class Universidade {
             BufferedReader lerMatricula = new BufferedReader(new FileReader(nomeArquivoMatriculas));
 
             for (String linha; (linha = lerMatricula.readLine()) != null;) {
-                
+
                 String dadosMatricula[] = linha.split(":");
                 long idDoc = Long.parseLong(dadosMatricula[0]);
                 String codigoDiscDoc = (dadosMatricula[1]);
-                
+
 //                System.out.println("ID: "+idDoc+" CodigoDisciplina: "+codigoDiscDoc);
-                
                 Estudante e = null;
                 Disciplina d = null;
-                
-                for(Estudante percorreE:estudantesArray){
-                    if(percorreE.getId() == idDoc){
+
+                for (Estudante percorreE : estudantesArray) {
+                    if (percorreE.getId() == idDoc) {
                         e = percorreE;
                         break;
                     }
                 }
-                
-                for(Disciplina percorreD:disciplinasArray){
-                    if(percorreD.getCodigo().equals(codigoDiscDoc)){
+
+                for (Disciplina percorreD : disciplinasArray) {
+                    if (percorreD.getCodigo().equals(codigoDiscDoc)) {
                         d = percorreD;
                         break;
                     }
                 }
-                
+
 //                System.out.println(e);
 //                System.out.println(d);
-                
-                Matricula m = new Matricula(e,d);
+                Matricula m = new Matricula(e, d);
                 e.addMatricula(m);
                 d.addMatricula(m);
 

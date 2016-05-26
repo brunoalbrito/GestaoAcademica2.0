@@ -20,11 +20,15 @@ public class EstudanteGrad extends Estudante{
     //Fazer
     @Override
     public String toString(){
-        return ("");
+        return ("Número: "+id+" Nome: "+nome+" Crétido: "+getTotalCreditos()+"Atividades Complementares: "+horasAtividades);
     }
 
     @Override
-    public int getTotalCredito() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getTotalCreditos() {
+        int totalDiciplina = 0;
+        for(Disciplina d:getDisciplinasMatriculadas()){
+            totalDiciplina += d.getCreditos();
+        }
+        return totalDiciplina + horasAtividades;
     }
 }

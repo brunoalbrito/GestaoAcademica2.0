@@ -49,5 +49,6 @@ public abstract class Estudante  {
         return  disciplinas;
     }
     
-    public abstract int getTotalCredito();
+    public abstract int getTotalCreditos();
+            
 }

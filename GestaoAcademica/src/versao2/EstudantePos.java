@@ -23,12 +23,16 @@ public class EstudantePos extends Estudante {
     //Fazer
     @Override
     public String toString() {
-        return ("");
+        return ("Número: " + id + " Nome: " + nome + " Crétido: " + getTotalCreditos() + " Tema: " +tema+" Orientador: "+orientador);
+
     }
 
     @Override
-    public int getTotalCredito() {
-//        IMPLEMENTAR
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public int getTotalCreditos() {
+        int totalDiciplina = 0;
+        for (Disciplina d : getDisciplinasMatriculadas()) {
+            totalDiciplina += d.getCreditos();
+        }
+        return totalDiciplina;
     }
 }

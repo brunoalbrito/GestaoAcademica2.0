@@ -1,0 +1,3 @@
+40682845:Jonatas:40682845@mackenzista.com.br:GRAD:120
+16430579:Lucas:16430579@mackenzista.com.br:POS:Controle de robôs:Furukawa
+55163741:Rubens:55163741@mackenzista.com.br:GRAD:220
