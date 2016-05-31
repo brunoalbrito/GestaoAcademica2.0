@@ -23,7 +23,7 @@ public class EstudantePos extends Estudante {
     //Fazer
     @Override
     public String toString() {
-        return ("Número: " + id + " Nome: " + nome + " Email: " + email + " Crétido: " + getTotalCreditos() + " Tema: " + tema + " Orientador: " + orientador);
+        return ("Número: " + id + " Nome: " + nome + " Crétido: " + getTotalCreditos() + " Tema: " +tema+" Orientador: "+orientador);
 
     }
 
