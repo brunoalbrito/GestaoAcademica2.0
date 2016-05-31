@@ -57,7 +57,7 @@ public class GestaoAcademicaApp1 {
         int resp = 0;
         try {
             resp = Integer.parseInt(JOptionPane.showInputDialog("Informe sua escolha:\n"
-                    + "1 - Listar número e nome de todos estudande \n"
+                    + "1 - Listar os números, nomes e créditos de todos os estudantes \n"
                     + "2 - Listar o código de todas as diciplicas \n"
                     + "3 - Listar todas as informações dos estudande matriculados em uma determina disciplica \n"
                     + "4 - Listar todas as informações de uma diciplica em que um determinado estudante está matriculado\n"

@@ -9,24 +9,25 @@ package versao2;
  *
  * @author Bruno
  */
-public class EstudanteGrad extends Estudante{
+public class EstudanteGrad extends Estudante {
+
     private int horasAtividades;
 
     public EstudanteGrad(long id, String nome, String email, int horasAtividades) {
         super(id, nome, email);
         this.horasAtividades = horasAtividades;
     }
-    
+
     //Fazer
     @Override
-    public String toString(){
-        return ("Número: "+id+" Nome: "+nome+" Crétido: "+getTotalCreditos()+"Atividades Complementares: "+horasAtividades);
+    public String toString() {
+        return ("Número: " + id + " Nome: " + nome + " Email: " + email + " Crétido: " + getTotalCreditos() + " Atividades Complementares: " + horasAtividades);
     }
 
     @Override
     public int getTotalCreditos() {
         int totalDiciplina = 0;
-        for(Disciplina d:getDisciplinasMatriculadas()){
+        for (Disciplina d : getDisciplinasMatriculadas()) {
             totalDiciplina += d.getCreditos();
         }
         return totalDiciplina + horasAtividades;
